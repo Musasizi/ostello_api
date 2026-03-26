@@ -25,7 +25,7 @@ const Booking = {
     getById: (id) => {
         const sql = `SELECT b.*,
                         u.full_name AS student_name, u.email AS student_email,
-                        r.room_type, r.price_per_month, r.hostel_id,
+                        r.room_number, r.room_type, r.price_per_semester, r.hostel_id,
                         h.name AS hostel_name, h.custodian_id
                  FROM bookings b
                  JOIN users u ON b.student_id = u.id
@@ -40,7 +40,7 @@ const Booking = {
      */
     getByStudent: (student_id) => {
         const sql = `SELECT b.*,
-                        r.room_type, r.price_per_month,
+                        r.room_number, r.room_type, r.price_per_semester,
                         h.name AS hostel_name, h.id AS hostel_id
                  FROM bookings b
                  JOIN rooms r ON b.room_id = r.id
@@ -56,7 +56,7 @@ const Booking = {
     getByCustodian: (custodian_id, status = null) => {
         let sql = `SELECT b.*,
                       u.full_name AS student_name, u.email AS student_email,
-                      r.room_type, r.price_per_month,
+                      r.room_number, r.room_type, r.price_per_semester,
                       h.name AS hostel_name, h.id AS hostel_id
                FROM bookings b
                JOIN users u ON b.student_id = u.id
@@ -105,7 +105,7 @@ const Booking = {
     getAll: () => {
         const sql = `SELECT b.*,
                         u.full_name AS student_name,
-                        r.room_type, r.price_per_month,
+                        r.room_number, r.room_type, r.price_per_semester,
                         h.name AS hostel_name
                  FROM bookings b
                  JOIN users u ON b.student_id = u.id

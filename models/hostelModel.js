@@ -37,8 +37,8 @@ const Hostel = {
         let sql = `
       SELECT h.*,
              COALESCE(h.avg_rating, 0) AS avg_rating,
-             MIN(r.price_per_month) AS min_price,
-             MAX(r.price_per_month) AS max_price`;
+             MIN(r.price_per_semester) AS min_price,
+             MAX(r.price_per_semester) AS max_price`;
 
         // If lat/lng provided, calculate distance using Haversine formula
         if (lat && lng) {

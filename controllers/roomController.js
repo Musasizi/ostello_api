@@ -41,7 +41,7 @@ const getRoomById = async (req, res) => {
 
 /**
  * POST /api/hostels/:hostelId/rooms – Create a room (CUSTODIAN owner)
- * Body: { room_type, price_per_month, capacity, is_available }
+ * Body: { room_number, room_type, price_per_semester, capacity, description, is_available }
  */
 const createRoom = async (req, res) => {
     const hostelId = req.params.hostelId;

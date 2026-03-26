@@ -36,7 +36,7 @@ const makePayment = async (req, res) => {
 
         // Verify booking exists and belongs to the student
         const [bookings] = await connection.query(
-            `SELECT b.*, r.price_per_month, r.id AS room_id
+            `SELECT b.*, r.price_per_semester, r.id AS room_id
        FROM bookings b
        JOIN rooms r ON b.room_id = r.id
        WHERE b.id = ?`,
@@ -72,7 +72,7 @@ const makePayment = async (req, res) => {
         }
 
         const transaction_ref = `OST-${uuidv4().slice(0, 8).toUpperCase()}`;
-        const amount = booking.price_per_month;
+        const amount = booking.price_per_semester;
 
         // Create payment record
         const [paymentResult] = await connection.query(
